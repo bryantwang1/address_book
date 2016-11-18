@@ -11,7 +11,7 @@ namespace AddressBook.Objects
         {
             _streetAddress = contactStreet;
             _city = contactCity;
-            _state = contactState;
+            _state = contactState.ToUpper();
             _zip = contactZip;
         }
 

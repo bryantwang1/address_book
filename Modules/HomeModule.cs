@@ -33,10 +33,10 @@ namespace AddressBook
             Post["/contacts/new_address_or_not/{id}"] = parameters => {
                 string addressOrNot = Request.Form["address-or-not"];
                 Contact selectedContact = Contact.Find(parameters.id);
+                Address noAddress = new Address("No Address", "", "", "");
+                selectedContact.SetAddress(noAddress);
                 if(addressOrNot == "return")
                 {
-                    Address noAddress = new Address("No Address", "", "", "");
-                    selectedContact.SetAddress(noAddress);
                     List<Contact> allContacts = Contact.GetAll();
                     return View["contacts.cshtml", allContacts];
                 }

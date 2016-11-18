@@ -1,10 +1,10 @@
 <head>
-    <link href="Content/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/css/styles.css")" rel="stylesheet" type="text/css">
 </head>
 <body>
     <h1>You added a new contact</h1>
-    <h3>@Model.GetName()</h3>
-    <h3>@Model.GetPhone()</h3>
+    <h3>Name: @Model.GetName()</h3>
+    <h3>Phone: @Model.GetPhone()</h3>
 
     <form action="/contacts/new_address_or_not/@Model.GetId()" method="post">
         <button type="submit" name="address-or-not" value="add-address">Add an address</button>

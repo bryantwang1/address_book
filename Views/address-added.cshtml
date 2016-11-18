@@ -1,15 +1,15 @@
 <head>
-    <link href="Content/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/css/styles.css")" rel="stylesheet" type="text/css">
 </head>
 <body>
     <h1>You added an address</h1>
-    <h3>@Model.GetName()</h3>
-    <h3>@Model.GetPhone()</h3>
+    <h3>Name: @Model.GetName()</h3>
+    <h3>Phone: @Model.GetPhone()</h3>
     <h3>Address: </h3>
-    <h4>@Model.GetAddress().GetStreet()</h4>
-    <h4>@Model.GetAddress().GetCity()</h4>
-    <h4>@Model.GetAddress().GetState()</h4>
-    <h4>@Model.GetAddress().GetZip()</h4>
+    <h4 class="address">@Model.GetAddress().GetStreet()</h4>
+    <h4 class="address">@Model.GetAddress().GetCity()</h4>
+    <h4 class="address">@Model.GetAddress().GetState()</h4>
+    <h4 class="address">@Model.GetAddress().GetZip()</h4>
 
     <h3><a href="/">Click here to return to the address book</a></h3>
 </body>
