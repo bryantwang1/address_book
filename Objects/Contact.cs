@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace AddressBook.Objects
@@ -53,6 +54,11 @@ namespace AddressBook.Objects
             _id = _contacts.Count;
         }
 
+        public void UpdateId(int updatedId)
+        {
+            _id = updatedId;
+        }
+
         public int GetId()
         {
             return _id;
@@ -61,6 +67,18 @@ namespace AddressBook.Objects
         public void Add()
         {
             _contacts.Add(this);
+        }
+
+        public static void Delete(int searchId)
+        {
+            _contacts.RemoveAt(searchId-1);
+
+            int counter = 1;
+            foreach(Contact contact in _contacts)
+            {
+                contact.UpdateId(counter);
+                counter++;
+            }
         }
 
         public static List<Contact> GetAll()

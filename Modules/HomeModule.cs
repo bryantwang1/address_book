@@ -19,6 +19,11 @@ namespace AddressBook
                 Contact selectedContact = Contact.Find(parameters.id);
                 return View["contact.cshtml", selectedContact];
             };
+            Get["/contact/delete/{id}"] = parameters => {
+                Contact.Delete(parameters.id);
+                List<Contact> allContacts = Contact.GetAll();
+                return View["contacts.cshtml", allContacts];
+            };
             Post["/contact/new"] = _ => {
                 string contactName = Request.Form["contact-name"];
                 string contactPhone = Request.Form["contact-phone"];
