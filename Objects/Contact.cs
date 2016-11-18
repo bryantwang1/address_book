@@ -72,5 +72,10 @@ namespace AddressBook.Objects
         {
             return _contacts[searchId-1];
         }
+
+        public static void ClearAll()
+        {
+            _contacts = new List<Contact> {};
+        }
     }
 }
