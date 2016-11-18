@@ -2,68 +2,68 @@ using System.Collections.Generic;
 
 namespace AddressBook.Objects
 {
-  public class Contact
-  {
-    private string _name;
-    private string _phone;
-    private Address _address;
-    private int _id;
-    private static List<Contact> _contacts = new List<Contact> {};
-
-    public Contact(string contactName, string contactPhone)
+    public class Contact
     {
-      _name = contactName;
-      _phone = contactPhone;
-    }
+        private string _name;
+        private string _phone;
+        private Address _address;
+        private int _id;
+        private static List<Contact> _contacts = new List<Contact> {};
 
-    public void SetName(string contactName)
-    {
-      _name = contactName;
-    }
+        public Contact(string contactName, string contactPhone)
+        {
+            _name = contactName;
+            _phone = contactPhone;
+        }
 
-    public string GetName()
-    {
-      return _name;
-    }
+        public void SetName(string contactName)
+        {
+            _name = contactName;
+        }
 
-    public void SetPhone(string contactPhone)
-    {
-      _phone = contactPhone;
-    }
+        public string GetName()
+        {
+            return _name;
+        }
 
-    public string GetPhone()
-    {
-      return _phone;
-    }
+        public void SetPhone(string contactPhone)
+        {
+            _phone = contactPhone;
+        }
 
-    public void SetAddress(Address contactAddress)
-    {
-      _address = contactAddress;
-    }
+        public string GetPhone()
+        {
+            return _phone;
+        }
 
-    public Address GetAddress()
-    {
-      return _address;
-    }
+        public void SetAddress(Address contactAddress)
+        {
+            _address = contactAddress;
+        }
 
-    public void SetId()
-    {
-      _id = _contacts.Count;
-    }
+        public Address GetAddress()
+        {
+            return _address;
+        }
 
-    public int GetId()
-    {
-      return _id;
-    }
+        public void SetId()
+        {
+            _id = _contacts.Count;
+        }
 
-    public static void Add()
-    {
-      _contacts.Add(this);
-    }
+        public int GetId()
+        {
+            return _id;
+        }
 
-    public List<Contact> GetAll()
-    {
-      return _contacts;
+        public static void Add()
+        {
+            _contacts.Add(this);
+        }
+
+        public List<Contact> GetAll()
+        {
+            return _contacts;
+        }
     }
-  }
 }
