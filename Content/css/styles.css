@@ -7,7 +7,7 @@ body {
 
 .address {
     line-height: 0px;
-    margin-left: 2vw;
+    margin-left: 3vw;
 }
 
 * {
@@ -53,4 +53,8 @@ a:hover {
 
 h3 {
     line-height: 10px;
+}
+
+h2, h3, h4, h5, form {
+    margin-left: 20px;
 }

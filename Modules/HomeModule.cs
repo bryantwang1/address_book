@@ -57,10 +57,9 @@ namespace AddressBook
                 selectedContact.SetAddress(newAddress);
                 return View["address-added.cshtml", selectedContact];
             };
-            Post["/"] = _ => {
+            Post["/contacts/clear"] = _ => {
                 Contact.ClearAll();
-                List<Contact> allContacts = Contact.GetAll();
-                return View["contacts.cshtml", allContacts];
+                return View["contacts_clear.cshtml"];
             };
         }
     }
