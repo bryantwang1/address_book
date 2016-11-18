@@ -95,5 +95,31 @@ namespace AddressBook.Objects
         {
             _contacts = new List<Contact> {};
         }
+
+        public static List<Contact> Search(string userQuery)
+        {
+            string userQueryLower = userQuery.ToLower();
+            List<Contact> searchResults = new List<Contact> {};
+            foreach(Contact contact in _contacts)
+            {
+                List<string> allProperties = new List<string> {};
+                allProperties.Add(contact.GetName().ToLower());
+                allProperties.Add(contact.GetPhone().ToLower());
+                allProperties.Add(contact.GetAddress().GetStreet().ToLower());
+                allProperties.Add(contact.GetAddress().GetCity().ToLower());
+                allProperties.Add(contact.GetAddress().GetState().ToLower());
+                allProperties.Add(contact.GetAddress().GetZip().ToLower());
+
+                foreach(string property in allProperties)
+                {
+                    if(property.Contains(userQueryLower))
+                    {
+                        searchResults.Add(contact);
+                        break;
+                    }
+                }
+            }
+            return searchResults;
+        }
     }
 }

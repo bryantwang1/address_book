@@ -1,0 +1,14 @@
+<head>
+    <link href="@Url.Content("~/Content/css/styles.css")" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>Search your address book</h1>
+    <form action="/contacts/search" method="post">
+        <div class="form-group">
+            <label for="user-query">Search: </label>
+            <input type="text" id="user-query" name="user-query" required autofocus placeholder="Alice">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+    <h3><a href="/">Click here to return to the address book without searching</a></h3>
+</body>
