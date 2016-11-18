@@ -1,6 +1,6 @@
 # _Address Book_
 
-#### _A C# project for week 1 of the Epicodus C# course, {Date of current version}_
+#### _A C# project for week 1 of the Epicodus C# course, 11/18/2016_
 
 #### By _**Bryant Wang**_
 
