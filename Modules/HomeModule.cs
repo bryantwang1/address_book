@@ -9,8 +9,14 @@ namespace AddressBook
     public HomeModule()
     {
       Get["/"] = _ => {
-        return View["index.cshtml"];
-      }
+        return View["contacts.cshtml"];
+      };
+      Get["/contacts/new"] = _ => {
+        return View["contact_form.cshtml"];
+      };
+      Get["/contacts/new_address"] = _ => {
+        return View["contact_address_form.cshtml"];
+      };
     }
   }
 }
