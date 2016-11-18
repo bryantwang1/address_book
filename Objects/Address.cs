@@ -5,9 +5,9 @@ namespace AddressBook.Objects
         private string _streetAddress;
         private string _city;
         private string _state;
-        private int _zip;
+        private string _zip;
 
-        public Address(string contactStreet, string contactCity, string contactState, int contactZip)
+        public Address(string contactStreet, string contactCity, string contactState, string contactZip)
         {
             _streetAddress = contactStreet;
             _city = contactCity;
@@ -22,7 +22,10 @@ namespace AddressBook.Objects
 
         public void AddStreet(string contactApt)
         {
-            _streetAddress = _streetAddress + ", Apt. " + contactApt;
+            if(contactApt != "")
+            {
+                _streetAddress = _streetAddress + ", Apt. " + contactApt;
+            }
         }
 
         public string GetStreet()
@@ -50,12 +53,12 @@ namespace AddressBook.Objects
             return _state;
         }
 
-        public void SetZip(int contactZip)
+        public void SetZip(string contactZip)
         {
             _zip = contactZip;
         }
 
-        public int GetZip()
+        public string GetZip()
         {
             return _zip;
         }

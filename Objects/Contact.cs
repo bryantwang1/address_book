@@ -14,6 +14,8 @@ namespace AddressBook.Objects
         {
             _name = contactName;
             _phone = contactPhone;
+            Add();
+            SetId();
         }
 
         public void SetName(string contactName)
@@ -61,9 +63,14 @@ namespace AddressBook.Objects
             _contacts.Add(this);
         }
 
-        public List<Contact> GetAll()
+        public static List<Contact> GetAll()
         {
             return _contacts;
+        }
+
+        public Contact Find(searchId)
+        {
+            return _contacts[searchId-1];
         }
     }
 }

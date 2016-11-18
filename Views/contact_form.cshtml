@@ -2,5 +2,17 @@
     <link href="Content/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+    <h1>Add a new contact</h1>
+    <form action="/contact/new" method="post">
+        <div class="form-group">
+            <label for="contact-name">Contact Name: </label>
+            <input type="text" id="contact-name" name="contact-name" required autofocus placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="contact-phone">Contact Phone: </label>
+            <input type="tel" id="contact-phone" name="contact-phone" required pattern="\(\d{3}\)\d{3}-\d{3}" title="The format is (###)###-####" placeholder="(555)555-5555">
+        </div>
+        <button type="submit">Create this contact</button>
+    </form>
+    <h3><a href="/">Click here to return to the address book without adding a new contact</a></h3>
 </body>
