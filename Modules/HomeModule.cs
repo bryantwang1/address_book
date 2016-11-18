@@ -27,6 +27,19 @@ namespace AddressBook
             Get["/contacts/search_form"] = _ => {
                 return View["search_form.cshtml"];
             };
+            Get["/contacts/search/{suggestion}"] = parameters => {
+                string userQuery = parameters.suggestion;
+                List<Contact> searchedContacts = Contact.Search(userQuery);
+                if(searchedContacts.Count > 0)
+                {
+                    return View["contacts_searched.cshtml", searchedContacts];
+                }
+                else
+                {
+                    List<string> searchSuggestions = Contact.SuggestSearch(userQuery);
+                    return View["search_suggestions.cshtml", searchSuggestions];
+                }
+            };
             Post["/contact/new"] = _ => {
                 string contactName = Request.Form["contact-name"];
                 string contactPhone = Request.Form["contact-phone"];
@@ -67,7 +80,15 @@ namespace AddressBook
             Post["/contacts/search"] = _ => {
                 string userQuery = Request.Form["user-query"];
                 List<Contact> searchedContacts = Contact.Search(userQuery);
-                return View["contacts_searched.cshtml", searchedContacts];
+                if(searchedContacts.Count > 0)
+                {
+                    return View["contacts_searched.cshtml", searchedContacts];
+                }
+                else
+                {
+                    List<string> searchSuggestions = Contact.SuggestSearch(userQuery);
+                    return View["search_suggestions.cshtml", searchSuggestions];
+                }
             };
         }
     }

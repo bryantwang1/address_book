@@ -121,5 +121,46 @@ namespace AddressBook.Objects
             }
             return searchResults;
         }
+
+        public static List<string> SuggestSearch(string userQuery)
+        {
+            string userQueryLower = userQuery.ToLower();
+            List<string> searchSuggestions = new List<string> {};
+            char[] splitQueryChar = userQueryLower.ToCharArray();
+            List<string> splitQueryString = new List<string> {};
+
+            foreach(char charLetter in splitQueryChar)
+            {
+                splitQueryString.Add(charLetter.ToString());
+            }
+
+            foreach(Contact contact in _contacts)
+            {
+                List<string> allProperties = new List<string> {};
+                allProperties.Add(contact.GetName().ToLower());
+                allProperties.Add(contact.GetPhone().ToLower());
+                allProperties.Add(contact.GetAddress().GetStreet().ToLower());
+                allProperties.Add(contact.GetAddress().GetCity().ToLower());
+                allProperties.Add(contact.GetAddress().GetState().ToLower());
+                allProperties.Add(contact.GetAddress().GetZip().ToLower());
+
+                foreach(string property in allProperties)
+                {
+                    int scoreCounter = 0;
+                    foreach(string character in splitQueryString)
+                    {
+                        if(property.Contains(character))
+                        {
+                            scoreCounter++;
+                        }
+                    }
+                    if(scoreCounter >= userQuery.Length/2)
+                    {
+                        searchSuggestions.Add(property);
+                    }
+                }
+            }
+            return searchSuggestions;
+        }
     }
 }
