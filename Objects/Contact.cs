@@ -58,7 +58,7 @@ namespace AddressBook.Objects
             return _id;
         }
 
-        public static void Add()
+        public void Add()
         {
             _contacts.Add(this);
         }
@@ -68,7 +68,7 @@ namespace AddressBook.Objects
             return _contacts;
         }
 
-        public Contact Find(searchId)
+        public static Contact Find(int searchId)
         {
             return _contacts[searchId-1];
         }

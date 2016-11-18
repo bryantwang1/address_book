@@ -15,6 +15,10 @@ namespace AddressBook
             Get["/contacts/new"] = _ => {
                 return View["contact_form.cshtml"];
             };
+            Get["/contact/{id}"] = parameters => {
+                Contact selectedContact = Contact.Find(parameters.id);
+                return View["contact.cshtml", selectedContact];
+            };
             Post["/contact/new"] = _ => {
                 string contactName = Request.Form["contact-name"];
                 string contactPhone = Request.Form["contact-phone"];
@@ -23,14 +27,16 @@ namespace AddressBook
             };
             Post["/contacts/new_address_or_not/{id}"] = parameters => {
                 string addressOrNot = Request.Form["address-or-not"];
+                Contact selectedContact = Contact.Find(parameters.id);
                 if(addressOrNot == "return")
                 {
+                    Address noAddress = new Address("No Address", "", "", "");
+                    selectedContact.SetAddress(noAddress);
                     List<Contact> allContacts = Contact.GetAll();
                     return View["contacts.cshtml", allContacts];
                 }
                 else
                 {
-                    Contact selectedContact = Contact.Find(parameters.id);
                     return View["contact_address_form.cshtml", selectedContact];
                 }
             };
@@ -43,7 +49,7 @@ namespace AddressBook
                 Address newAddress = new Address(contactStreet, contactCity, contactState, contactZip);
                 newAddress.AddStreet(contactApt);
                 Contact selectedContact = Contact.Find(parameters.id);
-                selectedContact(parameters.id).SetAddress(newAddress);
+                selectedContact.SetAddress(newAddress);
                 return View["address-added.cshtml", selectedContact];
             };
         }

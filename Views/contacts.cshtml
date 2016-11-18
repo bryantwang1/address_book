@@ -7,11 +7,11 @@
     {
         <h3>You don't have any contacts yet.</h3>
     }
-    @else
+    else
     {
         @foreach(var contact in Model)
         {
-            <li><a href="/@contact.GetId()"contact.GetName()</li>
+            <li><a href="/contact/@contact.GetId()">@contact.GetName()</li>
         }
     }
 
